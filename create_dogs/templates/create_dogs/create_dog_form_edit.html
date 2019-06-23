@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <br>
+    <br>
+    <br>
+    <div class="wrapper" style="background-image: url('https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.istockphoto.com%2Fvectors%2Fdoodle-pet-background-vector-id496817205&f=1')">
+<br>
+        <br>
+        <br>
+        <div class="container">
+<form>
+    <div class="card container">
+        <div class="text-center">
+            <h4>Edit Pet's Information</h4>
+        </div>
+        <form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputName">Pet's Name</label>
+      <input type="text" class="form-control" id="petname" placeholder="Pet's Name">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputBread">Pet's Bread</label>
+      <input type="text" class="form-control" id="petbread" placeholder="Bread">
+    </div>
+  </div>
+            <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputState">Type of pet</label>
+      <select id="inputState" class="form-control form-control-lg">
+        <option selected>Dog</option>
+        <option>Cat</option>
+          <option>Bird</option>
+          <option>Reptile</option>
+          <option>Fish</option>
+          <option>Rodent</option>
+          <option>Outdoor</option>
+          <option>Exotic</option>
+      </select>
+    </div>
+    <!-- input with datetimepicker -->
+<div class="form-group col-md-6">
+    <label class="label-control">Birthday</label>
+    <input type="text" class="form-control datetimepicker" value="10/05/2016"/>
+</div>
+  </div>
+            <div class="form-row justify-content-center">
+                <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+    <div class="fileinput-new thumbnail img-circle img-raised">
+	<img src="{% static 'img/profile/dog_default.jpeg' %}" alt="Pet's Profile Photo">
+    </div>
+    <div class="fileinput-preview fileinput-exists thumbnail img-circle img-raised"></div>
+    <div>
+    <span class="btn btn-raised btn-round btn-default btn-file">
+        <span class="fileinput-new">Add Photo</span>
+	<span class="fileinput-exists">Change</span>
+	<input type="file" name="..." /></span>
+        <br />
+        <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+    </div>
+</div>
+            </div>
+  <div class="form-group">
+    <label for="inputAddress">Pet Personality Page</label>
+            <!-- add rich text editor here -->
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+</div>
+  <div class="form-group">
+    <div class="form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox"> Agree to terms & this is my pet.
+        <span class="form-check-sign">
+          <span class="check"></span>
+        </span>
+      </label>
+    </div>
+  </div>
+  <center><button type="submit" class="btn btn-primary">Add Pet</button></center>
+</form>
+    </div>
+
+</form>
+</div>
+    </div>
+{% endblock %}

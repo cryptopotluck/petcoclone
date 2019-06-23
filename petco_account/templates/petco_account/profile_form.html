@@ -1,0 +1,382 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+    <div class="wrapper">
+    <div class="page-header clear-filter page-header-small" filter-color="orange">
+      <div class="page-header-image" data-parallax="true" style="background-image:url('https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2F10topmovers.com%2Fwp-content%2Fuploads%2F2017%2F06%2Fpets.jpg');">
+      </div>
+      <div class="container">
+{#<div class="fileinput fileinput-new" data-provides="fileinput">#}
+{#  <div class="fileinput-preview img-thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>#}
+{#  <div>#}
+{#    <span class="btn btn-outline-secondary btn-file">#}
+{#      <span class="fileinput-new">Select image</span>#}
+{#      <span class="fileinput-exists">Change</span>#}
+{#      <input type="file" name="...">#}
+{#    </span>#}
+{#    <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>#}
+{#  </div>#}
+{#</div>#}
+
+
+
+{#        <div class="photo-container">#}
+{#          <img src="{% static 'img/ryan.jpg' %}" style="width: 10%" class="rounded-circle" alt="">#}
+{#        </div>#}
+        <h3 class="title">Ryan Scheinder</h3>
+        <p class="category">Photographer</p>
+        <div class="row">
+          <div class="social-description col-4">
+            <h2>26</h2>
+            <p>Comments</p>
+          </div>
+          <div class="social-description col-4">
+            <h2>3</h2>
+            <p>Pets</p>
+          </div>
+          <div class="social-description col-4">
+            <h2>48</h2>
+            <p>Bookmarks</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+
+          <form action="{% url 'profile' %}" method="post" novalidate="novalidate">
+              {% csrf_token %}
+          <div class="modal fade bd-example-modal-lg" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+
+    <div class="modal-content">
+      <div class="card">
+        <div class="modal-header justify-content-center">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="now-ui-icons ui-1_simple-remove"></i>
+          </button>
+            <div class="header header-primary text-center">
+                          <center><h3>Edit About Me</h3></center>
+                      </div>
+        </div>
+          <div class="row">
+
+          <div class="col-md-3">
+          <div class="modal-body" data-background-color>
+
+{#              <div class="fileinput fileinput-new text-center" data-provides="fileinput">#}
+{#                            <div class="fileinput-new thumbnail">#}
+{#                              <img src="{{user.profile.profile_image.url}}" alt="...">#}
+{#                            </div>#}
+{#                            <div class="fileinput-preview fileinput-exists thumbnail"></div>#}
+{#                            <div>#}
+{#                              <span class="btn btn-success btn-simple btn-file">#}
+{#                                <span class="fileinput-new">{{pp_form | crispy}}</span>#}
+{#                                <span class="fileinput-exists">{{pp_form | crispy}}</span>#}
+{#                                <input type="file" name="profile_image">#}
+{#                              </span>#}
+{#                              <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput">#}
+{#                                  <svg class="svg-inline--fa fa-times fa-w-11" aria-hidden="true" data-prefix="fa" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" data-fa-i2svg=""><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg>#}
+{#                                  <!-- <i class="fa fa-times"></i> --> Remove</a>#}
+{##}
+{#                            </div>#}
+{#                          </div>#}
+
+              <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+    <div class="fileinput-new thumbnail img-circle img-raised">
+	<img src="{{user.profile.profile_image.url}}" alt="...">
+    </div>
+    <div>
+    <span class="btn btn-raised btn-round btn-default btn-file">
+        <span class="fileinput-new">{{ profile_picture_form }}</span>
+	<span class="fileinput-exists">{{ profile_picture_form }}</span>
+	<input type="file" name="profile_image2" /></span>
+        <br />
+        <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+    </div>
+</div>
+          </div>
+              <div class="container">
+              {{ form.favebook }}
+                  </div>
+          </div>
+              <div class="col-md-9">
+                  <div class="container">
+              <!-- Add Rich Text Editor Here -->
+              <div class="form-group">
+    <label for="exampleFormControlTextarea1">Example textarea</label>
+                  <br>
+                  {{ form.media }}
+                <div style="width: 100%">{{ form.about |safe }}</div>
+
+  </div>
+          </div>
+                  </div>
+          </div>
+          <div class="modal-footer justify-content-center">
+              <button type="submit" class="btn-round btn-success btn">Save</button>
+          </div>
+
+
+  </div>
+</div>
+  </div>
+          </div>
+              </form>
+          <div class="row">
+          <div class="col-md-12">
+            <h4 class="title text-center">The Pets & Me</h4>
+            <div class="nav-align-center">
+              <ul class="nav nav-pills nav-pills-primary nav-pills-just-icons" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" data-toggle="tab" href="#profile" role="tablist">
+                    <i class="now-ui-icons design_image"></i>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#home" role="tablist">
+                    <i class="now-ui-icons location_world"></i>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#messages" role="tablist">
+                    <i class="now-ui-icons design-2_ruler-pencil"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Tab panes -->
+            <div class="tab-content gallery">
+              <div class="tab-pane active" id="profile" role="tabpanel">
+                <div class="row" data-aos="fade-left">
+            <div class="col-md-3">
+                <div class="card-container first-card">
+                    <div class="card-component">
+                        <a href="index.html#basic-elements" target="_blank">
+                            <div class="front">
+                                <img src="{% static 'img/presentation-page/basic_thumb.jpg' %}">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card-container second-card">
+                    <div class="card-component">
+                        <a href="index.html#cards" target="_blank">
+                            <div class="front">
+                                <img src="{% static 'img/presentation-page/cards_thumb.jpg' %}">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card-container third-card">
+                    <div class="card-component">
+                        <a href="sections.html" target="_blank">
+                            <div class="front">
+                                <img src="{% static 'img/presentation-page/sections_thumb.jpg' %}">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card-container fourth-card">
+                    <div class="card-component">
+                        <a href="examples/product-page.html" target="_blank">
+                            <div class="front">
+                                <img src="{% static 'img/presentation-page/pages2_thumb.jpg' %}">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+                  <br>
+                  <div class="justify-content-center">
+                    <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
+                        </div>
+              </div>
+              <div class="tab-pane" id="home" role="tabpanel">
+                  <br>
+                <div class="row">
+                  <div class="card container">
+
+                  <div class="row justify-content-center">
+                    <div class="col-3">
+
+                    </div>
+                      <div class="col-6">
+                        <center><h3 class="title">About me</h3></center>
+                    </div>
+                      <div class="col-3">
+<button type="button" class="btn btn-primary btn-round btn-sm" data-toggle="modal" data-target="#aboutModal">Edit</button>
+                      </div>
+
+                      </div>
+                      <div class="row justify-content-center">
+<div class="button-container">
+          <a href="#button" class="btn btn-twitter btn-round btn-lg btn-icon" rel="tooltip" title="Follow me on Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#button" class="btn btn-instagram btn-round btn-lg btn-icon" rel="tooltip" title="Follow me on Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+    <a href="#button" class="btn btn-facebook btn-round btn-lg btn-icon" rel="tooltip" title="Follow me on Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+        </div>
+                      </div>
+
+
+
+        <h5 class="description text-center">An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.</h5>
+      </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="messages" role="tabpanel">
+                  <br>
+                <div class="row">
+                  <div class="col-md-5 ml-auto mr-auto">
+                    <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+   <div class="fileinput-new thumbnail img-raised">
+	<img src="{% static 'img/profile/dog_default.jpeg' %}" alt="default dog profile picture">
+   </div>
+   <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
+   <div>
+	<span class="btn btn-raised btn-round btn-default btn-file">
+	   <span class="fileinput-new">Select image</span>
+	   <span class="fileinput-exists">Change</span>
+	   <input type="file" name="..." />
+	</span>
+        <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput">
+        <i class="fa fa-times"></i> Remove</a>
+   </div>
+</div>
+                  </div>
+                  <div class="col-md-5">
+                      <h3>Add New Pet</h3>
+                    <div class="info info-horizontal">
+                      <div class="icon icon-info">
+                        <i class="now-ui-icons design_palette"></i>
+                      </div>
+                      <div class="description">
+                        <h5 class="info-title">Colors adjustments</h5>
+                        <p class="description">
+                          Gain access to the demographics, psychographics, and location of unique people who talk about your brand.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="info info-horizontal">
+                      <div class="icon icon-info">
+                        <i class="now-ui-icons design_scissors"></i>
+                      </div>
+                      <div class="description">
+                        <h5 class="info-title">Performance Clothing</h5>
+                        <p class="description">
+                          Unify data from Facebook, Instagram, Twitter, LinkedIn, and Youtube to gain rich insights from easy-to-use reports.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--     *********    CONTACT US 2     *********      -->
+    <div class="contactus-2">
+      <div id="contactUsMap" class="map"></div>
+      <div class="col-lg-6 col-md-10">
+        <div class="card card-contact card-raised">
+          <form role="form" id="contact-form" method="post">
+            <div class="card-header text-center">
+              <h4 class="card-title">Contact Us</h4>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="info info-horizontal">
+                    <div class="icon icon-primary">
+                      <i class="now-ui-icons tech_mobile"></i>
+                    </div>
+                    <div class="description">
+                      <h5 class="info-title">Give us a ring</h5>
+                      <p> Michael Jordan
+                        <br> +40 762 321 762
+                        <br> Mon - Fri, 8:00-22:00
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="info info-horizontal">
+                    <div class="icon icon-primary">
+                      <i class="now-ui-icons location_pin"></i>
+                    </div>
+                    <div class="description">
+                      <h5 class="info-title">Find us at the office</h5>
+                      <p> Bld Mihail Kogalniceanu, nr. 8,
+                        <br> 7652 Bucharest,
+                        <br> Romania
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 pr-2">
+                  <label>Full name</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="First Name...">
+                  </div>
+                </div>
+                <div class="col-md-6 pl-2">
+                  <label>Email address</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="now-ui-icons ui-1_email-85"></i></span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Email Here...">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox">
+                      <span class="form-check-sign"></span>
+                      I'm not a robot
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <button type="submit" class="btn btn-primary btn-round pull-right">Send Message</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="wrapper">
+<div class="page-header header-filter" filter-color="orange">
+        <div class="page-header-image" style="background-image:url('{% static 'img/gif/cleaningscreen.gif' %}')"></div>
+        <div class="content">
+            <div class="container">
+                <div class="col-md-5 ml-auto mr-auto">
+                    <div class="card card-login card-plain">
+                        <form class="form" method="post" id="LoginValidation" novalidate="novalidate" action="{% url 'login' %}">
+                            {% csrf_token %}
+                            <div class="card-header text-center">
+                                <div class="logo-container">
+                                    <img src="https://www.petco.com/wcsstore/PetcoStore/img/brand-logo.png" alt="">
+                                </div>
+                            </div>
+                            <div class="card-body">
+                             <div class="input-group no-border input-lg">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="now-ui-icons users_circle-08"  style="color: white"></i></span>
+                                </div>
+                                 <input type="text" required="" class="form-control" name="username" id="username" placeholder="Username..." style="color: white">
+                             </div>
+                              <div class="input-group no-border input-lg">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="now-ui-icons text_caps-small" style="color: white"></i></span>
+                                </div>
+                                <input type="password" required="" name="password" id="password" class="form-control" placeholder="Password..." style="color: white">
+                              </div>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button type="submit" class="btn btn-primary btn-round btn-lg btn-block">Login</button>
+                            </div>
+                            <div class="pull-left">
+                                <h6><a href="{% url 'register' %}" class="link footer-link">Create Account</a></h6>
+                            </div>
+
+                            <div class="pull-right">
+                                <h6><a href="#pablo" class="link footer-link">Need Help?</a></h6>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    </div>
+{% endblock %}

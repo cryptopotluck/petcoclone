@@ -1,0 +1,99 @@
+{% load static %}
+
+<!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-white fixed-top" color-on-scroll="500" style="background-color: aliceblue">
+    <div class="container">
+      <div class="navbar-translate">
+        <a class="navbar-brand" href="{% url 'welcome' %}" rel="tooltip" title="All Pets Go to Heaven" data-placement="bottom" target="_blank">
+          <img src="https://www.petco.com/wcsstore/PetcoStore/img/brand-logo.png">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-bar top-bar"></span>
+          <span class="navbar-toggler-bar middle-bar"></span>
+          <span class="navbar-toggler-bar bottom-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" data-nav-image="{% static 'img/blurred-image-1.jpg' %}" data-color="orange">
+        <ul class="navbar-nav ml-auto" id="ceva">
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink1" data-toggle="dropdown">
+              <i class="now-ui-icons design_app"></i>
+              <p>Pet Park</p>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink1">
+              <a class="dropdown-item" href="{% url 'dog_heaven' %}">
+                <i class="now-ui-icons business_chart-pie-36"></i> View All Pets
+              </a>
+              <a class="dropdown-item" target="_blank" href="{% url 'create_dog_post' %}">
+                <i class="now-ui-icons design_bullet-list-67"></i> Create Pet Post
+              </a>
+            </div>
+          </li>
+            <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink1" data-toggle="dropdown">
+              <i class="now-ui-icons design_app"></i>
+              <p>Pet Park</p>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink1">
+              <a class="dropdown-item" href="{% url 'update' %}">
+                <i class="now-ui-icons business_chart-pie-36"></i> My Profile
+              </a>
+              <a class="dropdown-item" target="_blank" href="{% url 'create_dog' %}">
+                <i class="now-ui-icons design_bullet-list-67"></i> Add Pet
+              </a>
+                <a class="dropdown-item" target="_blank" href="{% url 'account_goal' %}">
+                <i class="now-ui-icons design_bullet-list-67"></i> Graphs
+              </a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown">
+              <i class="now-ui-icons design_image" aria-hidden="true"></i>
+              <p>Examples</p>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="./examples/about-us.html">
+                <i class="now-ui-icons business_bulb-63"></i> About-us
+              </a>
+              <a class="dropdown-item" href="./examples/blog-post.html">
+                <i class="now-ui-icons text_align-left"></i> Blog Post
+              </a>
+              <a class="dropdown-item" href="./examples/blog-posts.html">
+                <i class="now-ui-icons design_bullet-list-67"></i> Blog Posts
+              </a>
+              <a class="dropdown-item" href="./examples/contact-us.html">
+                <i class="now-ui-icons location_pin"></i> Contact Us
+              </a>
+              <a class="dropdown-item" href="./examples/landing-page.html">
+                <i class="now-ui-icons education_paper"></i> Landing Page
+              </a>
+              <a class="dropdown-item" href="./examples/login-page.html">
+                <i class="now-ui-icons users_circle-08"></i> Login Page
+              </a>
+              <a class="dropdown-item" href="./examples/pricing.html">
+                <i class="now-ui-icons business_money-coins"></i> Pricing
+              </a>
+              <a class="dropdown-item" href="./examples/ecommerce.html">
+                <i class="now-ui-icons shopping_shop"></i> Ecommerce Page
+              </a>
+              <a class="dropdown-item" href="./examples/product-page.html">
+                <i class="now-ui-icons shopping_bag-16"></i> Product Page
+              </a>
+              <a class="dropdown-item" href="./examples/profile-page.html">
+                <i class="now-ui-icons users_single-02"></i> Profile Page
+              </a>
+              <a class="dropdown-item" href="./examples/signup-page.html">
+                <i class="now-ui-icons tech_mobile"></i> Signup Page
+              </a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn btn-primary" href="https://www.creative-tim.com/product/now-ui-kit-pro" target="_blank">
+              <p>Login</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- End Navbar -->

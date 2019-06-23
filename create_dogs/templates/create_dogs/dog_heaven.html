@@ -1,0 +1,275 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="wrapper" >
+<div class="page-header page-header-small">
+    <div class="page-header-image" style="background-image: url('{% static 'img/bg37.jpg' %}');">
+    </div>
+    <div class="content-center">
+        <div class="row">
+            <div class="col-md-8 ml-auto mr-auto">
+                <h1 class="title">Let's get started</h1>
+            </div>
+        </div>
+        <button class="btn btn-danger">Watch Video</button>
+    </div>
+</div>
+    <div class="row" data-aos="fade-left">
+            <div class="col-md-3">
+                <div class="card-container first-card">
+                    <div class="card-component">
+                        <a href="index.html#basic-elements" target="_blank">
+                            <div class="front">
+                                <img src="{% static 'img/presentation-page/basic_thumb.jpg' %}">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card-container second-card">
+                    <div class="card-component">
+                        <a href="index.html#cards" target="_blank">
+                            <div class="front">
+                                <img src="{% static 'img/presentation-page/cards_thumb.jpg' %}">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card-container third-card">
+                    <div class="card-component">
+                        <a href="sections.html" target="_blank">
+                            <div class="front">
+                                <img src="{% static 'img/presentation-page/sections_thumb.jpg' %}">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card-container fourth-card">
+                    <div class="card-component">
+                        <a href="examples/product-page.html" target="_blank">
+                            <div class="front">
+                                <img src="{% static 'img/presentation-page/pages2_thumb.jpg' %}">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <br>
+                  <div class="justify-content-center">
+                    <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
+                        </div>
+    <div class="row">
+                <div class="col-md-4">
+                    <div class="card card-plain card-blog">
+                        <div class="card-image">
+                            <a href="#pablo">
+                                <img class="img rounded img-raised" src="{% static 'img/bg5.jpg' %}">
+                            </a>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="progress-container progress-warning">
+  <span class="progress-badge">Funding Goal</span>
+  <div class="progress">
+    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="23" aria-valuemin="0" aria-valuemax="100" style="width: 23%;">
+      <span class="progress-value">23%</span>
+    </div>
+  </div>
+</div>
+                            <h4 class="card-title">
+                                <a href="#pablo">Autodesk looks to future of 3D printing with Project Escher</a>
+                            </h4>
+                            <p class="card-description">
+                                Like so many organizations these days, Autodesk is a company in transition. It was until recently a traditional boxed software company selling licenses.<a href="#pablo"> Read More </a>
+
+                                </p><div class="author">
+                                    <img src="{% static 'img/olivia.jpg' %}" alt="..." class="avatar img-raised">
+                                    <span>Anna Spark</span>
+                                </div>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card card-plain card-blog">
+                        <div class="card-image">
+                            <a href="#pablo">
+                                <img class="img rounded img-raised" src="{% static 'img/bg27.jpg' %}">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="progress-container progress-success">
+  <span class="progress-badge">Funding Goal</span>
+  <div class="progress">
+    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
+      <span class="progress-value">90%</span>
+    </div>
+  </div>
+</div>
+                            <h4 class="card-title">
+                                <a href="#pablo">Lyft launching cross-platform service this week</a>
+                            </h4>
+                            <p class="card-description">
+                                Like so many organizations these days, Autodesk is a company in transition. It was until recently a traditional boxed software company selling licenses.<a href="#pablo"> Read More </a>
+                                </p><div class="author">
+                                    <img src="{% static 'img/michael.jpg' %}" alt="..." class="avatar img-raised">
+                                    <span>John Black</span>
+                                </div>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card card-plain card-blog">
+                        <div class="card-image">
+                            <a href="#pablo">
+                                <img class="img rounded img-raised" src="{% static 'img/bg21.jpg' %}">
+                            </a>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="progress-container progress-warning">
+  <span class="progress-badge">Funding Goal</span>
+  <div class="progress">
+    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 34%;">
+      <span class="progress-value">34%</span>
+    </div>
+  </div>
+</div>
+                            <h4 class="card-title">
+                                <a href="#pablo">6 insights into the French Fashion landscape</a>
+                            </h4>
+                            <p class="card-description">
+                                Like so many organizations these days, Autodesk is a company in transition. It was until recently a traditional boxed software company selling licenses.<a href="#pablo"> Read More </a>
+
+                                </p><div class="author">
+                                    <img src="{% static 'img/james.jpg' %}" alt="..." class="avatar img-raised">
+                                    <span>James Newman</span>
+                                </div>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <div class="row">
+                <div class="col-md-4">
+                    <div class="card card-plain card-blog">
+                        <div class="card-image">
+                            <a href="#pablo">
+                                <img class="img rounded img-raised" src="{% static 'img/bg5.jpg' %}">
+                            </a>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="progress-container progress-danger">
+  <span class="progress-badge">Funding Goal</span>
+  <div class="progress">
+    <div class="progress-bar progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+      <span class="progress-value">0%</span>
+    </div>
+  </div>
+</div>
+                            <h4 class="card-title">
+                                <a href="#pablo">Autodesk looks to future of 3D printing with Project Escher</a>
+                            </h4>
+                            <p class="card-description">
+                                Like so many organizations these days, Autodesk is a company in transition. It was until recently a traditional boxed software company selling licenses.<a href="#pablo"> Read More </a>
+
+                                </p><div class="author">
+                                    <img src="{% static 'img/olivia.jpg' %}" alt="..." class="avatar img-raised">
+                                    <span>Anna Spark</span>
+                                </div>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card card-plain card-blog">
+                        <div class="card-image">
+                            <a href="#pablo">
+                                <img class="img rounded img-raised" src="{% static 'img/bg27.jpg' %}">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="progress-container progress-success">
+  <span class="progress-badge">Funding Goal</span>
+  <div class="progress">
+    <div class="progress-bar progress-bar-animated" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
+      <span class="progress-value">80%</span>
+    </div>
+  </div>
+</div>
+                            <h4 class="card-title">
+                                <a href="#pablo">Lyft launching cross-platform service this week</a>
+                            </h4>
+                            <p class="card-description">
+                                Like so many organizations these days, Autodesk is a company in transition. It was until recently a traditional boxed software company selling licenses.<a href="#pablo"> Read More </a>
+                                </p><div class="author">
+                                    <img src="{% static 'img/michael.jpg' %}" alt="..." class="avatar img-raised">
+                                    <span>John Black</span>
+                                </div>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card card-plain card-blog">
+                        <div class="card-image">
+                            <a href="#pablo">
+                                <img class="img rounded img-raised" src="{% static 'img/bg21.jpg' %}">
+                            </a>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="progress-container progress-success">
+  <span class="progress-badge">Funding Goal</span>
+  <div class="progress">
+    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+      <span class="progress-value">60%</span>
+    </div>
+  </div>
+</div>
+                            <h4 class="card-title">
+                                <a href="#pablo">6 insights into the French Fashion landscape</a>
+                            </h4>
+                            <p class="card-description">
+                                Like so many organizations these days, Autodesk is a company in transition. It was until recently a traditional boxed software company selling licenses.<a href="#pablo"> Read More </a>
+
+                                </p><div class="author">
+                                    <img src="{% static 'img/james.jpg' %}" alt="..." class="avatar img-raised">
+                                    <span>James Newman</span>
+                                </div>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    <nav aria-label="Page navigation example" >
+  <ul class="pagination justify-content-center">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
+</div>
+{% endblock %}
