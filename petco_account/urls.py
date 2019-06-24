@@ -8,7 +8,8 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('profile', views.profile, name='profile'),
     path('about', views.PetcoCreateView.as_view(), name='about'),
-    path('update', views.PetcoUpdateView.as_view(), name='update')
+    path('update', views.PetcoUpdateView.as_view(), name='update'),
+    path('logout', views.logout, name="logout")
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIAFILES_LOCATION, document_root=settings.DEFAULT_FILE_STORAGE)

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <form method="POST">
+    {% csrf_token %}
+    <!-- Delete Confirmation Modal -->
+<div id="exampleModalLive" class="modal fade card show" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true" style="display: block">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are You Sure You Want to Delete {{ object.pet_name | title }}?</h5>
+        <a  href="{% url 'dog_detail' object.pk %}" class="close"  aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </a>
+      </div>
+      <div class="modal-body">
+        Once you delete {{ object.pet_name | title }} you wont be able to recover this profile.
+      </div>
+      <div class="modal-footer">
+        <a href="{% url 'dog_detail' object.pk %}" class="btn btn-secondary" data-dismiss="modal">Close</a>
+        <button type="submit" class="btn btn-primary">Delete {{ object.pet_name | title }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+    </form>
+{% endblock %}
+

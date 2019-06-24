@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="wrapper">
+    <div class="page-header clear-filter page-header-small" style="background-image:url(
+    {% if object.pet_type == 'Dog' %}
+    'https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2F10topmovers.com%2Fwp-content%2Fuploads%2F2017%2F06%2Fpets.jpg'
+            {% elif object.pet_type == 'Reptile' %}
+        'https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fres.cloudinary.com%2Fdk-find-out%2Fimage%2Fupload%2Fq_80%2Cw_1920%2Cf_auto%2FDCTM_Penguin_UK_DK_AL327008_llkmui.png&f=1'
+        {% elif object.pet_type == 'Cat' %}
+        'https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2F4.bp.blogspot.com%2F-NCiGBg4AcJw%2FT9ue6tRzn8I%2FAAAAAAAAADQ%2F7MVPjOoUg-0%2Fs1600%2Fcute%2Bcat%2Bpictures%2B(25).jpg&f=1'
+        {% elif object.pet_type == 'Aquatic' %}
+        'https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FqdUOH3GeqxY%2Fmaxresdefault.jpg&f=1'
+        {% elif object.pet_type == 'Rodent' %}
+        'https://i.pinimg.com/736x/c1/a1/65/c1a165178fd059c6e0e3200414320dcd--hamster-wallpaper-rodents.jpg'
+        {% elif object.pet_type == 'Outdoor' %}
+        'https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fakafkaesquelife.files.wordpress.com%2F2013%2F05%2Farabian-horse.jpg&f=1'
+        {% else %}
+        'https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fs1.picswalls.com%2Fwallpapers%2F2014%2F07%2F25%2Fafrica-backgrounds_041434518_102.jpg&f=1'
+            {% endif %}
+    );background-size: cover">
+      <div class="page-header-image" data-parallax="true" style="background-image:url('https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2F10topmovers.com%2Fwp-content%2Fuploads%2F2017%2F06%2Fpets.jpg')">
+      </div>
+      <div class="container">
+        <h3 class="title">{{ object.pet_name | title }}</h3>
+          <br>
+          <div class="row justify-content-center">
+<div class="col-sm-2 ">
+	<img class="rounded-circle img-raised " src="{{object.pet_profile_pic.url}}" alt="{{ object.pet_name }}">
+</div></div>
+          <div class="row justify-content-center">
+              <a href="{% url 'edit_pet' object.id %}" class="btn btn-success btn-round btn-sm">Edit</a>
+              &nbsp;&nbsp;
+              <a href="{% url 'delete_dog' object.id %}"  class="btn btn-danger btn-round btn-sm removebutton">Delete</a>
+          </div>
+      </div>
+    </div>
+
+    <br>
+    <div class="container">
+    <div class="row">
+            <div class="col-md-12 card">
+									<div id="accordion" role="tablist" aria-multiselectable="true" class="card-collapse">
+									  <div class="card card-plain">
+									    <div class="card-header" role="tab" id="headingTwo">
+											<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+  												<center>About {{ object.pet_name | title }}</center>
+
+  												<i class="now-ui-icons arrows-1_minimal-down"></i>
+  										  	</a>
+									    </div>
+									    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+									      <div class="card-body">
+                                              {{ object.about_pet |safe }}
+									      </div>
+									    </div>
+									  </div>
+									</div>
+			                    </div>
+        </div>
+        <div class="row">
+                <div class="col-md-4">
+                    <div class="card card-plain card-blog">
+                        <div class="card-image">
+                            <a href="#pablo">
+                                <img class="img rounded img-raised" src="/static/img/bg5.jpg">
+                            </a>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="progress-container progress-warning">
+  <span class="progress-badge">Funding Goal</span>
+  <div class="progress">
+    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="23" aria-valuemin="0" aria-valuemax="100" style="width: 23%;">
+      <span class="progress-value">23%</span>
+    </div>
+  </div>
+</div>
+                            <h4 class="card-title">
+                                <a href="#pablo">Autodesk looks to future of 3D printing with Project Escher</a>
+                            </h4>
+                            <p class="card-description">
+                                Like so many organizations these days, Autodesk is a company in transition. It was until recently a traditional boxed software company selling licenses.<a href="#pablo"> Read More </a>
+
+                                </p><div class="author">
+                                    <img src="/static/img/olivia.jpg" alt="..." class="avatar img-raised">
+                                    <span>Anna Spark</span>
+                                </div>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card card-plain card-blog">
+                        <div class="card-image">
+                            <a href="#pablo">
+                                <img class="img rounded img-raised" src="/static/img/bg27.jpg">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="progress-container progress-success">
+  <span class="progress-badge">Funding Goal</span>
+  <div class="progress">
+    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
+      <span class="progress-value">90%</span>
+    </div>
+  </div>
+</div>
+                            <h4 class="card-title">
+                                <a href="#pablo">Lyft launching cross-platform service this week</a>
+                            </h4>
+                            <p class="card-description">
+                                Like so many organizations these days, Autodesk is a company in transition. It was until recently a traditional boxed software company selling licenses.<a href="#pablo"> Read More </a>
+                                </p><div class="author">
+                                    <img src="/static/img/michael.jpg" alt="..." class="avatar img-raised">
+                                    <span>John Black</span>
+                                </div>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card card-plain card-blog">
+                        <div class="card-image">
+                            <a href="#pablo">
+                                <img class="img rounded img-raised" src="/static/img/bg21.jpg">
+                            </a>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="progress-container progress-warning">
+  <span class="progress-badge">Funding Goal</span>
+  <div class="progress">
+    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 34%;">
+      <span class="progress-value">34%</span>
+    </div>
+  </div>
+</div>
+                            <h4 class="card-title">
+                                <a href="#pablo">6 insights into the French Fashion landscape</a>
+                            </h4>
+                            <p class="card-description">
+                                Like so many organizations these days, Autodesk is a company in transition. It was until recently a traditional boxed software company selling licenses.<a href="#pablo"> Read More </a>
+
+                                </p><div class="author">
+                                    <img src="/static/img/james.jpg" alt="..." class="avatar img-raised">
+                                    <span>James Newman</span>
+                                </div>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+        </div>
+{{ object.pet_name }}
+{% endblock %}

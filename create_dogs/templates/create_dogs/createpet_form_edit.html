@@ -9,46 +9,33 @@
         <br>
         <br>
         <div class="container">
-<form>
+
     <div class="card container">
-        <div class="text-center">
-            <h4>Edit Pet's Information</h4>
-        </div>
-        <form>
+        <form id='pet-form-id' method="post" novalidate="novalidate">
+            {% csrf_token %}
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputName">Pet's Name</label>
-      <input type="text" class="form-control" id="petname" placeholder="Pet's Name">
-    </div>
+{{ form.pet_name }}    </div>
     <div class="form-group col-md-6">
       <label for="inputBread">Pet's Bread</label>
-      <input type="text" class="form-control" id="petbread" placeholder="Bread">
-    </div>
+{{ form.pet_bread }}    </div>
   </div>
             <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputState">Type of pet</label>
-      <select id="inputState" class="form-control form-control-lg">
-        <option selected>Dog</option>
-        <option>Cat</option>
-          <option>Bird</option>
-          <option>Reptile</option>
-          <option>Fish</option>
-          <option>Rodent</option>
-          <option>Outdoor</option>
-          <option>Exotic</option>
-      </select>
+      {{ form.pet_type }}
     </div>
     <!-- input with datetimepicker -->
 <div class="form-group col-md-6">
     <label class="label-control">Birthday</label>
-    <input type="text" class="form-control datetimepicker" value="10/05/2016"/>
+    <input type="date" class="form-control datetimepicker"/>
 </div>
   </div>
             <div class="form-row justify-content-center">
                 <div class="fileinput fileinput-new text-center" data-provides="fileinput">
     <div class="fileinput-new thumbnail img-circle img-raised">
-	<img src="{% static 'img/profile/dog_default.jpeg' %}" alt="Pet's Profile Photo">
+	<img src="{{pet.pet_profile_pic.url}}" alt="Pet's Profile Photo">
     </div>
     <div class="fileinput-preview fileinput-exists thumbnail img-circle img-raised"></div>
     <div>
@@ -62,10 +49,12 @@
 </div>
             </div>
   <div class="form-group">
-    <label for="inputAddress">Pet Personality Page</label>
-            <!-- add rich text editor here -->
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-</div>
+    <label for="exampleFormControlTextarea1">Pets Personality Page</label>
+                  <br>
+                  {{ form.media }}
+                <div style="width: 100%">{{ form.about_pet |safe }}</div>
+
+  </div>
   <div class="form-group">
     <div class="form-check">
       <label class="form-check-label">
@@ -76,11 +65,11 @@
       </label>
     </div>
   </div>
-  <center><button type="submit" class="btn btn-primary">Add Pet</button></center>
+  <center><button type="submit" class="btn btn-primary" value="post" name="post">Add Pet</button></center>
 </form>
     </div>
 
-</form>
+
 </div>
     </div>
 {% endblock %}
