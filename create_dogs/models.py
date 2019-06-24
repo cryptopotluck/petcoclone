@@ -24,6 +24,10 @@ class CreatePet(models.Model):
     def get_absolute_url(self):
         return reverse('edit_pet', kwargs={'pk': self.pk})
 
+    def __str__(self):
+        return f'{self.pet_name}'
+
+
 
 
 

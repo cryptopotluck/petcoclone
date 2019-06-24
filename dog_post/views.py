@@ -17,6 +17,7 @@ class PostCreateView(CreateView):
     def get_form(self, form_class=None):
         form = super(PostCreateView, self).get_form(PetPostForm)
         form.fields['post_body'].widget = TinyMCE()
+
         return form
 
     def form_valid(self, form):

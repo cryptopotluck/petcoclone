@@ -18,8 +18,3 @@ class PetPost(models.Model):
     post_body = models.TextField(blank=True)
     funding_goal = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
     funded_amount = models.DecimalField(default=0.00, max_digits=6, decimal_places=2)
-
-    def __str__(self):
-        return f'{self.pet}'
-
-
