@@ -159,19 +159,20 @@ class PetcoUpdateView(View):
         return render(request, self.template_name, context)
 
     def post(self, request):
-        post = get_object_or_404(Profile, User)
-        form = ProfileFrom(request.POST, request.FILES)
 
-        if form.is_valid():
-            post.about = form.cleaned_data['about']
-            post.instagram = form.cleaned_data['instagram']
-            post.twitter = form.cleaned_data['twitter']
-            post.facebook = form.cleaned_data['facebook']
-            post.profile_image = form.cleaned_data['profile_image2']
-            post.profile_image = form.cleaned_data['profile_image2']
-            # fs = FileSystemStorage()
-            # fs.save(post.profile_image)
-            post.save()
+        if request.method == 'POST':
+            # uploaded_pic = request.FILES['profile_image2']
+            profile_form = ProfileFrom(request.POST, instance=request.user.profile)
+            # profile_picture_form = ProfilePictureUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+            social_media_form = SocialMediaForm(request.POST, instance=request.user.profile)
+            if profile_form.is_valid():
+                profile_form.save(Profile.about)
+                social_media_form.save(Profile.instagram)
+                social_media_form.save(Profile.twitter)
+                social_media_form.save(Profile.instagram)
+                # profile_picture_form.save(Profile.profile_image)
+                fs = FileSystemStorage()
+                # fs.save(uploaded_pic)
 
         return redirect('update')
 

@@ -127,7 +127,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'petcoclonedb',
         'USER': 'postgres',
-        'PASSWORD': '',
+        'PASSWORD': '15a14l1k',
         'HOST': 'localhost'
     }
 }
