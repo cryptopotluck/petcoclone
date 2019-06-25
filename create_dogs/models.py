@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+
 # Create your models here.
 
 
@@ -20,6 +21,7 @@ class CreatePet(models.Model):
     pet_profile_pic = models.ImageField(upload_to='dog/%Y/%m/%d/', default='profile/default/dog_default.jpeg',
                                         blank=True)
     about_pet = models.TextField(blank=True)
+
 
     def get_absolute_url(self):
         return reverse('edit_pet', kwargs={'pk': self.pk})

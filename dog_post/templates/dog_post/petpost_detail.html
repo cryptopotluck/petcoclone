@@ -1,0 +1,200 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+     <br>
+    <br>
+    <br>
+    <br>
+    <div class="wrapper">
+    <div class="page-header page-header-small">
+
+    <div class="page-header-image" data-parallax="true" style="background-image: url(&quot;../assets/img/bg24.jpg&quot;); transform: translate3d(0px, 0px, 0px);">
+    </div>
+
+        <br>
+        <br>
+
+    <div class="content-center">
+        <div class="row justify-content-center">
+<div class="col-sm-2 ">
+    <a href="{% url 'dog_detail' object.pet.id %}">
+	<img class="rounded-circle img-raised " src="{{object.pet.pet_profile_pic.url}}" alt="{{ object.pet.pet_name | title }}"  rel="tooltip" title="{{ object.pet.pet_name | title }}">
+</a></div></div>
+        <div class="row">
+            <div class="col-md-8 ml-auto mr-auto text-center">
+                <h2 class="title">{{ object.post_title | title }}</h2>
+                <h4>Owner: {{ object.pet.owner.username | title }}.</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="section">
+        <div class="container">
+            <div class="card card-raised">
+                <div class="card-title ">
+                    <center><h2>{{ object.post_title | title }}</h2></center>
+                </div>
+                <div class="row ">
+            <div class="col-md-12 ">
+                <div class="button-container ">
+<center>
+                    <a href="{{ object.pet.owner.profile.twitter }}" class="btn btn-icon btn-lg btn-twitter btn-round">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="{{ object.pet.owner.profile.facebook }}" class="btn btn-icon btn-lg btn-facebook btn-round">
+                        <i class="fab fa-facebook-square"></i>
+                    </a>
+                    <a href="{{ object.pet.owner.profile.instagram }}" class="btn btn-icon btn-lg btn-google btn-round">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+    </center>
+                </div>
+            </div>
+        </div>
+                <div class="row justify-content-center">
+                    <a href="{% url 'dog_detail' object.pet.id %}" class="btn btn-primary btn-round btn-lg">
+                        <i class="now-ui-icons text_align-left"></i> More post's by {{ object.pet.pet_name }}
+                    </a>
+                </div>
+                <hr>
+            {{ object.post_body | safe }}
+                <br>
+                {% if object.monetization == 'Funding' %}
+                <hr>
+                <div class="card-footer">
+                    <div class="row container">
+                    <div class="col ">
+                        <center><div class="form-group">
+                            <label for="exampleFormControlSelect2">Donate Amount</label>
+                <input class="form-control" type="text" placeholder="Goal: ${{ object.funding_goal  }}">
+                        </div>
+
+                            <button class="btn btn-round btn-sm btn-success">Donate</button></center>
+                    </div>
+                    </div>
+                </div>
+                <hr>
+                {% else %}
+                    <hr>
+                {% endif %}
+                <br>
+                <div class="section section-comments">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 ml-auto mr-auto">
+                    <div class="media-area">
+                        <h3 class="title text-center">3 Comments</h3>
+                        <div class="media card card-raised container">
+                            <a class="pull-left" href="#pablo">
+                                <div class="avatar">
+                                    <img class="media-object img-raised" src="{% static 'img/james.jpg' %}" alt="...">
+                                </div>
+                            </a>
+                            <div class="media-body">
+                                <h5 class="media-heading">Tina Andrew <small class="text-muted">· 7 minutes ago</small></h5>
+
+                                <p>Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!</p>
+                                <p>All praises and blessings to the families of people who never gave up on dreams. Don't forget, You're Awesome!</p>
+
+                                <div class="media-footer">
+                                    <a href="#pablo" class="btn btn-primary btn-neutral pull-right" rel="tooltip" title="" data-original-title="Reply to Comment">
+                                        <i class="now-ui-icons ui-1_send"></i> Reply
+                                    </a>
+                                    <a href="#pablo" class="btn btn-danger btn-neutral pull-right">
+                                        <i class="now-ui-icons ui-2_favourite-28"></i> 243
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="media card card-raised container">
+                          <a class="pull-left" href="#pablo">
+                              <div class="avatar">
+                                 <img class="media-object img-raised" alt="Tim Picture" src="{% static 'img/michael.jpg' %}">
+                              </div>
+                          </a>
+                          <div class="media-body">
+                             <h5 class="media-heading">John Camber <small class="text-muted">· Yesterday</small></h5>
+
+                             <p>Hello guys, nice to have you on the platform! There will be a lot of great stuff coming soon. We will keep you posted for the latest news.</p>
+                             <p> Don't forget, You're Awesome!</p>
+
+                             <div class="media-footer">
+                                 <a href="#pablo" class="btn btn-primary btn-neutral pull-right" rel="tooltip" title="" data-original-title="Reply to Comment">
+                                     <i class="now-ui-icons ui-1_send"></i> Reply
+                                 </a>
+                                 <a href="#pablo" class="btn btn-danger btn-neutral pull-right">
+                                     <i class="now-ui-icons ui-2_favourite-28"></i> 25
+                                 </a>
+                             </div>
+                             <div class="media card card-raised container">
+                                  <a class="pull-left" href="#pablo">
+                                        <div class="avatar">
+                                            <img class="media-object img-raised" alt="64x64" src="{% static 'img/julie.jpg' %}">
+                                        </div>
+                                  </a>
+                                  <div class="media-body">
+                                        <h5 class="media-heading">Tina Andrew <small class="text-muted">· 2 Days Ago</small></h5>
+
+                                        <p>Hello guys, nice to have you on the platform! There will be a lot of great stuff coming soon. We will keep you posted for the latest news.</p>
+                                        <p> Don't forget, You're Awesome!</p>
+
+                                        <div class="media-footer">
+                                            <a href="#pablo" class="btn btn-primary btn-neutral pull-right" rel="tooltip" title="" data-original-title="Reply to Comment">
+                                                <i class="now-ui-icons ui-1_send"></i> Reply
+                                            </a>
+                                            <a href="#pablo" class="btn btn-danger btn-neutral pull-right">
+                                                <i class="now-ui-icons ui-2_favourite-28"></i> 2
+                                            </a>
+                                        </div>
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+                      <h3 class="title text-center">Post your comment</h3>
+                      <div class="media media-post">
+                          <a class="pull-left author" href="{% url 'update' %}">
+                              <div class="avatar">
+                                  <img class="media-object img-raised" alt="64x64" src="{{ object.pet.owner.profile.profile_image.url }}">
+                              </div>
+                          </a>
+                          <div class="media-body">
+                                  <textarea class="form-control" placeholder="Write a nice reply or go home..." rows="4"></textarea>
+                                  <div class="media-footer">
+                                      <a href="#pablo" class="btn btn-primary pull-right">
+                                          <i class="now-ui-icons ui-1_send"></i> Reply
+                                      </a>
+                                  </div>
+                          </div>
+                      </div> <!-- end media-post -->
+                </div>
+            </div>
+        </div>
+    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+
+
+            </div>
+{% endblock %}

@@ -7,6 +7,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.utils import timezone
 from tinymce.widgets import TinyMCE
 from .forms import CreatePetForm
+from dog_post.models import PetPost
+from petco_account.models import Profile
 
 # Create your views here.
 
@@ -38,8 +40,22 @@ class CreatePetPage(CreateView):
         for error in errors:
             print(error)
 
+
 class DogPage(DetailView):
     model = CreatePet
+
+    def get_context_data(self, **kwargs):
+        context = super(DogPage, self).get_context_data(**kwargs)
+        # context['posts'] = PetPost.objects.filter().values().filter()
+        posts = PetPost.objects.filter().values().filter()
+        user_profile = Profile.objects.filter(user=self.request.user).values()
+
+        context.update({
+            'posts':posts,
+            'user_profile': user_profile
+        })
+        return context
+
 
 class PetEditPage(View):
     template_name = 'create_dogs/createpet_form_edit.html'

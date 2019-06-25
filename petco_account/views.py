@@ -107,7 +107,7 @@ def profile(request):
 
         }
 
-        return render(request, 'petco_account/profile.html', context)
+    return render(request, 'petco_account/profile.html', context)
 
 
 class PetcoCreateView(CreateView):

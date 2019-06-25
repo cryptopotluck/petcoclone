@@ -17,3 +17,9 @@ class PetPostForm(forms.ModelForm):
         widgets = {
             'post_body': TinyMCE(),
         }
+
+
+form = PetPostForm()
+
+# article = PetPost.objects.get(pk=1)
+# form = PetPostForm(instance=article)

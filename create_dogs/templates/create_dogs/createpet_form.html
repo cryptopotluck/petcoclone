@@ -9,10 +9,9 @@
         <br>
         <br>
         <div class="container">
-
-    <div class="card container">
-        <form action="{% url 'create_dog' %}" method="post" novalidate="novalidate">
+<form action="{% url 'create_dog' %}" method="POST" novalidate="novalidate" enctype="multipart/form-data">
             {% csrf_token %}
+    <div class="card container">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputName">Pet's Name</label>
@@ -66,8 +65,8 @@
     </div>
   </div>
   <center><button type="submit" class="btn btn-primary" value="post" name="post">Add Pet</button></center>
-</form>
     </div>
+    </form>
 
 
 </div>

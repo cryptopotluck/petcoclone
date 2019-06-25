@@ -26,12 +26,16 @@
           <br>
           <div class="row justify-content-center">
 <div class="col-sm-2 ">
-	<img class="rounded-circle img-raised " src="{{object.pet_profile_pic.url}}" alt="{{ object.pet_name }}">
+	<img class="rounded-circle img-raised " src="{{object.pet_profile_pic.url}}" alt="{{ object.pet_name | title }}"  rel="tooltip" title="{{ object.pet_name | title }}">
 </div></div>
           <div class="row justify-content-center">
+            {% if user_profile.0.user_id == object.owner.profile.user_id %}
               <a href="{% url 'edit_pet' object.id %}" class="btn btn-success btn-round btn-sm">Edit</a>
               &nbsp;&nbsp;
               <a href="{% url 'delete_dog' object.id %}"  class="btn btn-danger btn-round btn-sm removebutton">Delete</a>
+              {% else %}
+
+              {% endif %}
           </div>
       </div>
     </div>
@@ -59,101 +63,46 @@
 			                    </div>
         </div>
         <div class="row">
-                <div class="col-md-4">
+
+            {% for post in posts %}
+            {% if post.pet_id == object.id %}
+            <div class="col-md-4" data-aos="zoom-in-up">
                     <div class="card card-plain card-blog">
                         <div class="card-image">
-                            <a href="#pablo">
-                                <img class="img rounded img-raised" src="/static/img/bg5.jpg">
+                            <a href="{% url 'dog_post_detail' post.id %}">
+                                <img class="img rounded img-raised" src="{{ object.pet_profile_pic.url }}">
                             </a>
                         </div>
 
                         <div class="card-body">
-                            <div class="progress-container progress-warning">
-  <span class="progress-badge">Funding Goal</span>
-  <div class="progress">
-    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="23" aria-valuemin="0" aria-valuemax="100" style="width: 23%;">
-      <span class="progress-value">23%</span>
-    </div>
-  </div>
-</div>
-                            <h4 class="card-title">
-                                <a href="#pablo">Autodesk looks to future of 3D printing with Project Escher</a>
-                            </h4>
-                            <p class="card-description">
-                                Like so many organizations these days, Autodesk is a company in transition. It was until recently a traditional boxed software company selling licenses.<a href="#pablo"> Read More </a>
-
-                                </p><div class="author">
-                                    <img src="/static/img/olivia.jpg" alt="..." class="avatar img-raised">
-                                    <span>Anna Spark</span>
-                                </div>
-                            <p></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card card-plain card-blog">
-                        <div class="card-image">
-                            <a href="#pablo">
-                                <img class="img rounded img-raised" src="/static/img/bg27.jpg">
-                            </a>
-                        </div>
-                        <div class="card-body">
+                {% if post.funded_amount == 0.00 %}
+            {% else %}
                             <div class="progress-container progress-success">
-  <span class="progress-badge">Funding Goal</span>
+  <span class="progress-badge">Funding Goal ${{ post.funding_goal }}</span>
   <div class="progress">
-    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
-      <span class="progress-value">90%</span>
+    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{ post.funded_amount }}" aria-valuemin="0" aria-valuemax="{{ post.funding_goal }}" style="width: calc({% widthratio post.funded_amount post.funding_goal 1 %});">
+      <span class="progress-value">${{ post.funded_amount }} Funded</span>
     </div>
   </div>
 </div>
+                    {% endif %}
                             <h4 class="card-title">
-                                <a href="#pablo">Lyft launching cross-platform service this week</a>
+                                <a href="{% url 'dog_post_detail' post.id %}">{{ post.post_title | title}}</a>
                             </h4>
                             <p class="card-description">
-                                Like so many organizations these days, Autodesk is a company in transition. It was until recently a traditional boxed software company selling licenses.<a href="#pablo"> Read More </a>
+                                {{ post.post_body |striptags |truncatewords:20 | capfirst}} <a href="{% url 'dog_post_detail' post.id %}"> Read More </a>
                                 </p><div class="author">
-                                    <img src="/static/img/michael.jpg" alt="..." class="avatar img-raised">
-                                    <span>John Black</span>
+                                    <img src="{{ object.owner.profile.profile_image.url }}" alt="..." class="avatar img-raised">
+                                    <span>{{ object.owner.profile.user.username }}</span>
                                 </div>
                             <p></p>
                         </div>
                     </div>
                 </div>
+            {% endif %}
+        {% endfor %}
 
-                <div class="col-md-4">
-                    <div class="card card-plain card-blog">
-                        <div class="card-image">
-                            <a href="#pablo">
-                                <img class="img rounded img-raised" src="/static/img/bg21.jpg">
-                            </a>
-                        </div>
-
-                        <div class="card-body">
-                            <div class="progress-container progress-warning">
-  <span class="progress-badge">Funding Goal</span>
-  <div class="progress">
-    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 34%;">
-      <span class="progress-value">34%</span>
-    </div>
-  </div>
-</div>
-                            <h4 class="card-title">
-                                <a href="#pablo">6 insights into the French Fashion landscape</a>
-                            </h4>
-                            <p class="card-description">
-                                Like so many organizations these days, Autodesk is a company in transition. It was until recently a traditional boxed software company selling licenses.<a href="#pablo"> Read More </a>
-
-                                </p><div class="author">
-                                    <img src="/static/img/james.jpg" alt="..." class="avatar img-raised">
-                                    <span>James Newman</span>
-                                </div>
-                            <p></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        </div>
     </div>
         </div>
-{{ object.pet_name }}
 {% endblock %}

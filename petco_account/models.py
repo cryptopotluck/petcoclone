@@ -15,6 +15,9 @@ class Profile(models.Model):
     twitter = models.URLField(blank=True)
     pets = models.ManyToManyField(CreatePet, blank=True)
 
+    def __str__(self):
+        return f'{self.user.username}'
+
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
@@ -23,3 +26,4 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
+

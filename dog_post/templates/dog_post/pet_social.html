@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="wrapper" >
+<div class="page-header page-header-small" style="background-image: url('https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Frstatic.petco.com%2Flocations%2F686967_11869_2421.jpg&f=1'); background-size: cover">
+    <div class="page-header-image" style="background-image: url('{% static 'img/bg37.jpg' %}');">
+    </div>
+    <div class="content-center">
+        <div class="row">
+            <div class="col-md-8 ml-auto mr-auto">
+                <h1 class="title">Let's get started</h1>
+            </div>
+        </div>
+        <button class="btn btn-danger">Watch Video</button>
+    </div>
+</div>
+        <div class="container">
+    <div class="row" data-aos="fade-left">
+            <div class="col-md-3">
+                <div class="card-container first-card">
+                    <div class="card-component">
+                        <a href="index.html#basic-elements" target="_blank">
+                            <div class="front">
+                                <img src="{% static 'img/cards_resized/fun_card.png' %}" rel="tooltip" title="Fun Posts">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card-container second-card">
+                    <div class="card-component">
+                        <a href="index.html#cards" target="_blank">
+                            <div class="front">
+                                <img src="{% static 'img/cards_resized/birthday_pet.jpg' %}" rel="tooltip" title="Birthday Posts">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card-container third-card">
+                    <div class="card-component">
+                        <a href="sections.html" target="_blank">
+                            <div class="front">
+                                <img src="{% static 'img/cards_resized/sickcat.jpg' %}" rel="tooltip" title="Pet Clinic">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card-container fourth-card">
+                    <div class="card-component">
+                        <a href="examples/product-page.html" target="_blank">
+                            <div class="front">
+                                <img src="{% static 'img/cards_resized/Inmimoryof.jpg' %}" rel="tooltip" title="In Memory of..">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <br>
+                  <div class="justify-content-center">
+                    <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
+                        </div>
+{#        {{ posts }}#}
+{#        <br>#}
+{#        <br>#}
+{##}
+{#        {{  post_picture }}#}
+{#        <br>#}
+{#        <br>#}
+{#        {{ post_owner }}#}
+{#        <br>#}
+{#        <br>#}
+{#        {{ user_username }}#}
+{#        <br>#}
+{#        <br>#}
+    <div class="row">
+        {% if post_picture and  posts%}
+            {% for post in posts %}
+            {% for picture in post_picture %}
+                                    {% if picture.id == post.pet_id %}
+            <div class="col-md-4" data-aos="flip-up">
+                    <div class="card card-plain card-blog">
+                        <div class="card-image">
+                            <a href="{% url 'dog_post_detail' post.id %}">
+                                <img src="/media/{{ picture.pet_profile_pic }}" rel="tooltip" title="" data-original-title="{{ picture.pet_name | title}}">
+
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="progress-container progress-warning">
+  <span class="progress-badge">Funding Goal ${{ post.funding_goal }}</span>
+  <div class="progress">
+    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{ post.funded_amount }}" aria-valuemin="0" aria-valuemax="{{ post.funding_goal }}" style="width: calc({{ post.funded_amount }}/{{ post.funding_goal }});">
+      <span class="progress-value">{% widthratio post.funded_amount post.funding_goal 1 %}%</span>
+    </div>
+  </div>
+</div>
+                            <h4 class="card-title">
+                                <a href="{% url 'dog_post_detail' post.id %}">{{ post.post_title | title}}</a>
+                            </h4>
+                            <p class="card-description">
+                                {{ post.post_body |striptags |truncatewords:20}} <a href="{% url 'dog_post_detail' post.id %}"> Read More </a>
+                                </p>
+                            {% for author in post_owner %}
+                                    {% if author.user_id == picture.owner_id %}
+                            <div class="author">
+                                    <img src="/media/{{ author.profile_image }}" alt="..." class="avatar img-raised">
+                                    {% for user in user_username %}
+                                {% if user.id == picture.owner_id %}
+                                    <span>{{ user.username | title}}</span>
+                                    {% endif %}
+                            {% endfor %}
+                                </div>
+                                         {% endif %}
+                        {% endfor %}
+                            <p></p>
+                        </div>
+                    </div>
+
+                </div>
+                                {% endif %}
+                                    {% endfor %}
+        {% endfor %}
+        {% else %}
+
+        {% endif %}
+
+
+                    </div>
+
+                    <nav aria-label="Page navigation example" >
+  <ul class="pagination justify-content-center">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
+</div>
+    </div>
+{% endblock %}
