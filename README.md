@@ -1,7 +1,9 @@
-#Petco Project
+Petco Project
+-
 This project was built as a example project in two days to show off my programing capabilities as a backend developer.
 
-##What is this project?
+What is this project?
+-
 
 This is a full stack pet funding social media app that would be hosted on the cloud. You can upload your pets & let other people get to know them. Donate to posts based on different criteria ranging from birthday to medical needs & any other reason you can think of.
 
@@ -78,10 +80,10 @@ Structure of Project
     1. Work in progress haven't started will Build rich interactive graphs with plotly & Dash
         
        
-        
+How to Run Project
 -
-#How to Run Project
 This project is built with python 3.7 once you download the project on your local machine create and setup a virtual env. Open terminal of project & run ``pip3 install -r requirements.txt`` Create a postgres database & set it up in the settings.py file. Run migrations & you should be good to go.
 
 #Pictures of Project
-![Image description](https://media.giphy.com/media/THHeaDHfPufoUjCf05/giphy.gif)
+
+![Gif of project](https://media.giphy.com/media/THHeaDHfPufoUjCf05/giphy.gif)
