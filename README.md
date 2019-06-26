@@ -84,4 +84,4 @@ Structure of Project
 This project is built with python 3.7 once you download the project on your local machine create and setup a virtual env. Open terminal of project & run ``pip3 install -r requirements.txt`` Create a postgres database & set it up in the settings.py file. Run migrations & you should be good to go.
 
 #Pictures of Project
-![Image description](link-to-image)
+![Image description](https://media.giphy.com/media/THHeaDHfPufoUjCf05/giphy.gif)

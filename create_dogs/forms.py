@@ -1,11 +1,10 @@
-from .models import CreatePet
-from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from tinymce.widgets import TinyMCE
 
+from .models import CreatePet
+
 
 class CreatePetForm(forms.ModelForm):
-
     def __init__(self, *args, **kwargs):
         super(CreatePetForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():

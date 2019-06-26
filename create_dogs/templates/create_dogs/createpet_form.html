@@ -1,74 +1,103 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#id_pet_profile_pic").change(function (e) {
+                for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
+                    var file = e.originalEvent.srcElement.files[i];
+                    var reader = new FileReader();
+                    reader.onloadend = function () {
+                        $('#display_pic')
+                            .attr('src', reader.result);
+{#                            .width(400);#}
+{#                            .height(400);#}
+                    }
+                    reader.readAsDataURL(file);
+                    break;
+                }
+            });
+        });
+    </script>
     <br>
     <br>
     <br>
-    <div class="wrapper" style="background-image: url('https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.istockphoto.com%2Fvectors%2Fdoodle-pet-background-vector-id496817205&f=1')">
-<br>
+    <div class="wrapper"
+         style="background-image: url('https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.istockphoto.com%2Fvectors%2Fdoodle-pet-background-vector-id496817205&f=1')">
+        <br>
         <br>
         <br>
         <div class="container">
-<form action="{% url 'create_dog' %}" method="POST" novalidate="novalidate" enctype="multipart/form-data">
-            {% csrf_token %}
-    <div class="card container">
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputName">Pet's Name</label>
-{{ form.pet_name }}    </div>
-    <div class="form-group col-md-6">
-      <label for="inputBread">Pet's Bread</label>
-{{ form.pet_bread }}    </div>
-  </div>
-            <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputState">Type of pet</label>
-      {{ form.pet_type }}
-    </div>
-    <!-- input with datetimepicker -->
-<div class="form-group col-md-6">
-    <label class="label-control">Birthday</label>
-    <input type="date" class="form-control datetimepicker" value="10/05/2016"/>
-</div>
-  </div>
-            <div class="form-row justify-content-center">
-                <div class="fileinput fileinput-new text-center" data-provides="fileinput">
-    <div class="fileinput-new thumbnail img-circle img-raised">
-	<img src="{% static 'img/profile/dog_default.jpeg' %}" alt="Pet's Profile Photo">
-    </div>
-    <div class="fileinput-preview fileinput-exists thumbnail img-circle img-raised"></div>
-    <div>
-    <span class="btn btn-raised btn-round btn-default btn-file">
-        <span class="fileinput-new">Add Photo</span>
-	<span class="fileinput-exists">Change</span>
-	<input type="file" name="..." /></span>
-        <br />
-        <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
-    </div>
-</div>
-            </div>
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Pets Personality Page</label>
-                  <br>
-                  {{ form.media }}
-                <div style="width: 100%">{{ form.about_pet |safe }}</div>
 
-  </div>
-  <div class="form-group">
-    <div class="form-check">
-      <label class="form-check-label">
-        <input class="form-check-input" type="checkbox"> Agree to terms & this is my pet.
-        <span class="form-check-sign">
+            <div class="card container">
+                <form action="{% url 'create_dog' %}" enctype="multipart/form-data" method="post"
+                      novalidate="novalidate">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputName">Pet's Name</label>
+                            {{ form.pet_name }}    </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputBread">Pet's Bread</label>
+                            {{ form.pet_bread }}    </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputState">Type of pet</label>
+                            {{ form.pet_type }}
+                        </div>
+                        <!-- input with datetimepicker -->
+                        <div class="form-group col-md-6">
+                            <label class="label-control">Birthday</label>
+                            <input type="date" class="form-control" name="birthday" dataformatas="yyyy-MM-dd"/>
+                        </div>
+                    </div>
+                    <div class="form-row justify-content-center">
+                        <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                            <div class="fileinput-new thumbnail img-circle img-raised">
+                                <img id="display_pic" src="{% static 'img/profile/dog_default.jpeg' %}"
+                                     alt="Pet's Profile Photo">
+                            </div>
+                            <div class="fileinput-preview fileinput-exists thumbnail img-circle img-raised"></div>
+                            <div>
+                            <span class="btn btn-raised btn-round btn-default btn-file">
+                                <span class="fileinput-new">Add Photo</span>
+                            <span class="fileinput-exists">Change</span>
+                                <input type="file" name="pet_profile_pic" accept="image/*" class="form-control"
+                                       id="id_pet_profile_pic">
+                            </span>
+                                <br/>
+                                <a href="#pablo" class="btn btn-danger btn-round fileinput-exists"
+                                   data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Pets Personality Page</label>
+                        <br>
+                        {{ form.media }}
+                        <div style="width: 100%">{{ form.about_pet |safe }}</div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox"> Agree to terms & this is my pet.
+                                <span class="form-check-sign">
           <span class="check"></span>
         </span>
-      </label>
-    </div>
-  </div>
-  <center><button type="submit" class="btn btn-primary" value="post" name="post">Add Pet</button></center>
-    </div>
-    </form>
+                            </label>
+                        </div>
+                    </div>
+                    <center>
+                        <button type="submit" class="btn btn-primary" value="post" name="post">Add Pet</button>
+                    </center>
+                </form>
+            </div>
 
 
-</div>
+        </div>
     </div>
 {% endblock %}

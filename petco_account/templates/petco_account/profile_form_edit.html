@@ -2,6 +2,26 @@
 {% load crispy_forms_tags %}
 {% load static %}
 {% block content %}
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#id_profile_image").change(function (e) {
+                for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
+                    var file = e.originalEvent.srcElement.files[i];
+                    var reader = new FileReader();
+                    reader.onloadend = function () {
+                        $('#display_pic')
+                            .attr('src', reader.result);
+{#                            .width(400);#}
+{#                            .height(400);#}
+                    }
+                    reader.readAsDataURL(file);
+                    break;
+                }
+            });
+        });
+    </script>
     <div class="wrapper">
     <div class="page-header clear-filter page-header-small" style="background-image:url('https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2F10topmovers.com%2Fwp-content%2Fuploads%2F2017%2F06%2Fpets.jpg');">
       <div class="page-header-image" data-parallax="true">
@@ -19,13 +39,13 @@
 </div></div>
         <div class="row justify-content-center">
 <div class="button-container">
-          <a href="{{ twitter_url }}" class="btn btn-twitter btn-round btn-lg btn-icon" rel="tooltip" title="Follow me on Twitter">
+          <a href="{{ twitter_url }}" class="btn btn-twitter btn-round btn-lg btn-icon" rel="tooltip" title="Follow {{ username | title }} on Twitter">
             <i class="fab fa-twitter"></i>
           </a>
-          <a href="{{ instagram_url }}" class="btn btn-instagram btn-round btn-lg btn-icon" rel="tooltip" title="Follow me on Instagram">
+          <a href="{{ instagram_url }}" class="btn btn-instagram btn-round btn-lg btn-icon" rel="tooltip" title="Follow {{ username | title }} on Instagram">
             <i class="fab fa-instagram"></i>
           </a>
-    <a href="{{ facebook_url }}" class="btn btn-facebook btn-round btn-lg btn-icon" rel="tooltip" title="Follow me on Facebook">
+    <a href="{{ facebook_url }}" class="btn btn-facebook btn-round btn-lg btn-icon" rel="tooltip" title="Follow {{ username | title }} on Facebook">
             <i class="fab fa-facebook"></i>
           </a>
         </div>
@@ -75,13 +95,13 @@
 
               <div class="fileinput fileinput-new text-center" data-provides="fileinput">
     <div class="fileinput-new thumbnail img-circle img-raised">
-	<img src="{{user.profile.profile_image.url}}" alt="...">
+	<img id="display_pic" src="{{user.profile.profile_image.url}}" alt="...">
     </div>
     <div>
     <span class="btn btn-raised btn-round btn-default btn-file">
         <span class="fileinput-new">Add</span>
 	<span class="fileinput-exists">Change</span>
-	<input type="file" name="profile_image2"/></span>
+	<input type="file" id="id_profile_image" name="profile_image"/></span>
         <br />
         <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
     </div>
@@ -253,22 +273,19 @@
                   <br>
                 <div class="row">
                   <div class="col-md-5 ml-auto mr-auto">
-                    <div class="fileinput fileinput-new text-center" data-provides="fileinput">
-   <div class="fileinput-new thumbnail img-raised">
-	<img src="{% static 'img/profile/dog_default.jpeg' %}" alt="default dog profile picture">
-   </div>
-   <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
-   <div>
-	<span class="btn btn-raised btn-round btn-default btn-file">
-	   <span class="fileinput-new">Select image</span>
-	   <span class="fileinput-exists">Change</span>
-	   <input type="file" name="..." />
-	</span>
-        <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput">
-        <i class="fa fa-times"></i> Remove</a>
-   </div>
-</div>
+
+                          {% if pets %}
+    {% for pet in pets %}
+<center>
+<div class="col-sm-6">
+	                        <p class="category">{{ pet.pet_name }}</p>
+	                        <img src="/media/{{ pet.pet_profile_pic }}" alt="Thumbnail Image" class="rounded-circle img-raised">
+	                    </div>
+        </center>
+                      {% endfor %}
+                  {% endif %}
                   </div>
+
                   <div class="col-md-5">
                       <h3>Create New Post</h3>
                     <div class="info info-horizontal">

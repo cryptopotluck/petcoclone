@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from .models import Profile
 from django.contrib.auth.models import User
 from django.contrib import messages, auth
@@ -10,6 +10,8 @@ from django.views import View
 from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator
 from create_dogs.models import CreatePet
+
+
 # Create your views here.
 
 
@@ -64,7 +66,6 @@ def register(request):
 
 
 def profile(request):
-
     if request.method == 'POST':
         # uploaded_pic = request.FILES['profile_image2']
         profile_form = ProfileFrom(request.POST, instance=request.user.profile)
@@ -78,6 +79,7 @@ def profile(request):
             # profile_picture_form.save(Profile.profile_image)
             fs = FileSystemStorage()
             # fs.save(uploaded_pic)
+        return redirect('profile')
     else:
         post = get_object_or_404(Profile, user_id=request.user)
         form = ProfileFrom(initial={'about': post.about, 'facebook': post.facebook, 'twitter': post.twitter,
@@ -95,15 +97,15 @@ def profile(request):
         page = request.GET.get('page')
         my_pets = paginator.get_page(page)
         context = {
-                'post': post,
-                'form': form,
-                'about': about,
-                'username': username,
-                'facebook_url': facebook_url,
-                'twitter_url': twitter_url,
-                'instagram_url': instagram_url,
-                'profile_pic': profile_pic,
-                'pets': my_pets,
+            'post': post,
+            'form': form,
+            'about': about,
+            'username': username,
+            'facebook_url': facebook_url,
+            'twitter_url': twitter_url,
+            'instagram_url': instagram_url,
+            'profile_pic': profile_pic,
+            'pets': my_pets,
 
         }
 
@@ -119,7 +121,7 @@ class PetcoCreateView(CreateView):
         form.fields['about'].widget = TinyMCE()
         return form
 
-    def form_invalid(self,form):
+    def form_invalid(self, form):
         errors = form.errors
         for error in errors:
             print(error)
@@ -128,10 +130,10 @@ class PetcoCreateView(CreateView):
 class PetcoUpdateView(View):
     template_name = 'petco_account/profile_form_edit.html'
 
-
     def get(self, request):
         post = get_object_or_404(Profile, user_id=request.user)
-        form = ProfileFrom(initial={'about': post.about, 'facebook': post.facebook, 'twitter': post.twitter, 'instagram': post.instagram, 'profile_image2': post.profile_image})
+        form = ProfileFrom(initial={'about': post.about, 'facebook': post.facebook, 'twitter': post.twitter,
+                                    'instagram': post.instagram, 'profile_image2': post.profile_image})
 
         form.fields['about'].widget = TinyMCE()
         about = Profile.objects.get(user=request.user).about
@@ -140,7 +142,7 @@ class PetcoUpdateView(View):
         twitter_url = Profile.objects.get(user=request.user).twitter
         instagram_url = Profile.objects.get(user=request.user).instagram
         profile_pic = Profile.objects.get(user=request.user).profile_image
-        pets =  CreatePet.objects.filter(owner=request.user)
+        pets = CreatePet.objects.filter(owner=request.user)
         paginator = Paginator(pets, 3)
         page = request.GET.get('page')
         my_pets = paginator.get_page(page)
@@ -149,37 +151,34 @@ class PetcoUpdateView(View):
             'form': form,
             'about': about,
             'username': username,
-            'facebook_url':facebook_url,
+            'facebook_url': facebook_url,
             'twitter_url': twitter_url,
             'instagram_url': instagram_url,
-            'profile_pic':profile_pic,
+            'profile_pic': profile_pic,
             'pets': my_pets,
 
         }
+        print(context)
         return render(request, self.template_name, context)
 
     def post(self, request):
-
         if request.method == 'POST':
-            # uploaded_pic = request.FILES['profile_image2']
-            profile_form = ProfileFrom(request.POST, instance=request.user.profile)
-            # profile_picture_form = ProfilePictureUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+            profile_form = ProfileFrom(request.POST, request.FILES, instance=request.user.profile)
             social_media_form = SocialMediaForm(request.POST, instance=request.user.profile)
             if profile_form.is_valid():
                 profile_form.save(Profile.about)
                 social_media_form.save(Profile.instagram)
                 social_media_form.save(Profile.twitter)
                 social_media_form.save(Profile.instagram)
-                # profile_picture_form.save(Profile.profile_image)
+                # profile_form.save(Profile.profile_image)
                 fs = FileSystemStorage()
                 # fs.save(uploaded_pic)
 
         return redirect('update')
+
 
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)
         messages.success(request, 'You logged out, see you next time!')
         return redirect('login')
-
-

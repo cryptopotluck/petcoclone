@@ -1,6 +1,7 @@
-from django.urls import path, reverse
+from django.urls import path
+
 from . import views
-from .models import CreatePet
+
 urlpatterns = [
     path('', views.dog_heaven, name='dog_heaven'),
     path('create/', views.CreatePetPage.as_view(), name='create_dog'),
