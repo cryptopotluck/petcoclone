@@ -1,7 +1,7 @@
 Django==2.2.2
 django-annoying==0.10.4
 django-crispy-forms==1.7.2
-django-tinymce==2.8.0
+django-tinymce==3.4.0
 django-tinymce4-lite==1.7.5
 jsmin==2.2.2
 Pillow==6.0.0
